@@ -6,6 +6,8 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+ 
+  
 }
 
 a {
@@ -16,4 +18,34 @@ img{
 }
 figure{
   width: 20%;
+}
+input{
+  padding: 8px;
+  margin-bottom: 15px;
+  width: 100%;
+}
+select{
+  height: 38px;
+  margin-bottom: 15px;
+  width: 100%;
+}
+button{
+  margin-bottom: 15px;
+  background-color: red;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+p{
+  line-height: 30px;
+}
+form{
+  max-width: 400px;
+}
+.form__error{
+  color: red;
+  font-size: 12px;
+  position: relative;
+  top: -15px
 }

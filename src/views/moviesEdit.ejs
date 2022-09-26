@@ -14,21 +14,44 @@
       </figure>
     <h1 class="titulo">Película a Editar:  <%= Movie.title %></h1>
     <section class="formulario">
-        <form action="/movies/update/<%= Movie.id %>?_method=put" method="POST">
+        <form action="/movies/update/<%= Movie.id %>?_method=PUT" method="POST" novalidate>
+            
             <label for="title">Title </label>
-            <p><input type="text" name="title" id="title" value="<%= Movie.title %>" required></p>
+            <p><input type="text" name="title" id="title" value="<%= Movie.title %>" ></p>
+            <p class="form__error"><%= locals.errors && errors.title ? errors.title.msg : null %></p>
+            
             <label for="rating">Rating </label>
-            <p><input type="number" name="rating" id="rating" value="<%= Movie.rating %>" required></p>
+            <p><input type="number" name="rating" id="rating" value="<%= Movie.rating %>" ></p>
+             <p class="form__error"><%= locals.errors && errors.rating ? errors.rating.msg : null %></p>
+
             <label for="awards">Awards </label>
-            <p><input type="number" name="awards" id="awards" value="<%= Movie.awards %>" required></p>
+            <p><input type="number" name="awards" id="awards" value="<%= Movie.awards %>" ></p>
+             <p class="form__error"><%= locals.errors && errors.awards ? errors.awards.msg : null %></p>
+
             <label for="release_date">Release date </label>
-            <p><input type="date" name="release_date" id="release_date" value="<%= Movie.release_date %>" required></p>
+            <p><input type="date" name="release_date" id="release_date" value="<%= moment(Movie.release_date).format('YYYY-MM-DD') %>" ></p>
+             <p class="form__error"><%= locals.errors && errors.release_date ? errors.release_date.msg : null %></p>
+
             <label for="length">Length </label>
-            <p><input type="number" name="length" id="" value="<%= Movie.length %>" required></p>
+            <p><input type="number" name="length" id="" value="<%= Movie.length %>" ></p>
+             <p class="form__error"><%= locals.errors && errors.length ? errors.length.msg : null %></p>
+
+            <label for="genre_id">Genre </label>
+            <p>
+                <select name="genre" id="" required>
+                    <% allGenres.forEach(genre => { %>
+                    <option value="<%= genre.id %>" <% if (Movie.genre_id == genre.id) { %><%= 'selected' %><% }; %>><%= genre.name %></option>
+                    <% }); %>
+                </select>
+            </p>
+             <p class="form__error"><%= locals.errors && errors.genre ? errors.genre.msg : null %></p>
+
             <br>
-            <p> <button class="botonAgregar" type="submit">Actualizar</button>
+            <p> <button class="botonAgregar" type="submit" style="width: 100%;">Actualizar</button>
+                <br>
         
             <a  class="botonVolver" href="/movies">Listado de Películas</a></p>
+            
         </form>
     </section>
 </body>
